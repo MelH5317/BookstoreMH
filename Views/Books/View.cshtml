@@ -1,0 +1,16 @@
+@View "{id}/{handler?}"
+@model BookstoreMH.Views.Book.ViewModel
+@{
+    ViewData["Title"] = Model.Book.Title;
+}
+
+<h2>@Model.Book.Title</h2>
+<form asp-page-handler="Delete" asp-route-id="@Model.Book.BookId">
+    <p>
+        @if (Model.CanEditBook)
+        {
+        <a asp-Page="Edit" asp-route-id="@Model.Book.BookId" class="btn btn-primary">Edit</a>
+        <button class="btn btn-danger">Delete</button>
+        }
+    </p>
+</form>
